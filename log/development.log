@@ -5992,6 +5992,7 @@ Processing by HomeController#search as */*
 Completed 200 OK in 789ms (Views: 2.2ms | ActiveRecord: 0.0ms)
 
 
+<<<<<<< HEAD
 Started GET "/" for 127.0.0.1 at 2014-12-14 18:24:34 -0800
 Processing by HomeController#index as HTML
   Rendered home/index.html.slim within layouts/application (15.6ms)
@@ -6805,3 +6806,715 @@ Started POST "/search" for 127.0.0.1 at 2014-12-14 19:40:38 -0800
 Processing by HomeController#search as */*
   Parameters: {"latitude"=>"49.2820362", "longitude"=>"-123.1077101"}
 Completed 200 OK in 758ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+=======
+Started GET "/" for 127.0.0.1 at 2014-12-14 18:42:30 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (1.9ms)
+Completed 200 OK in 511ms (Views: 502.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 18:42:31 -0800
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 18:42:47 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 18:42:47 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 18:42:47 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.1ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:33 -0800
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (21.5ms)
+Completed 200 OK in 29ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 18:51:37 -0800
+
+
+Started POST "/search" for 127.0.0.1 at 2014-12-14 18:51:42 -0800
+Processing by HomeController#search as */*
+  Parameters: {"latitude"=>"49.2820263", "longitude"=>"-123.1081838", "term"=>"'"}
+Completed 200 OK in 1327ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (0.3ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 19:06:29 -0800
+
+
+Started POST "/search" for 127.0.0.1 at 2014-12-14 19:06:37 -0800
+Processing by HomeController#search as */*
+  Parameters: {"latitude"=>"49.2820129", "longitude"=>"-123.10756519999998", "term"=>"ads"}
+Completed 200 OK in 1192ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 19:06:44 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 19:08:18 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 22ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 19:08:19 -0800
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 19:08:27 -0800
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 22ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 19:51:05 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.0ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:12 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.0ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 19:51:14 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 19:57:29 -0800
+Processing by HomeController#index as HTML
+Completed 500 Internal Server Error in 3ms
+
+NameError (undefined local variable or method `build_results_container' for #<HomeController:0x007fbd690a37e0>):
+  app/controllers/home_controller.rb:4:in `index'
+
+
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:19:37 -0800
+Processing by HomeController#index as HTML
+Completed 500 Internal Server Error in 3ms
+
+NameError (undefined local variable or method `build_results_container' for #<HomeController:0x007fbd63ccb230>):
+  app/controllers/home_controller.rb:4:in `index'
+
+
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.4ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 20:19:44 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 464ms (Views: 463.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 20:19:45 -0800
+
+
+Started POST "/search" for 127.0.0.1 at 2014-12-14 20:19:52 -0800
+Processing by HomeController#search as */*
+  Parameters: {"latitude"=>"49.282014", "longitude"=>"-123.1081758", "term"=>"asdf"}
+Completed 200 OK in 1279ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+Processing by MapController#index as HTML
+  Rendered map/index.html.slim within layouts/application (0.2ms)
+Completed 200 OK in 26ms (Views: 25.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started GET "/assets/burst_tiny.png" for 127.0.0.1 at 2014-12-14 20:20:05 -0800
+
+
+Started POST "/search" for 127.0.0.1 at 2014-12-14 20:20:09 -0800
+Processing by HomeController#search as */*
+  Parameters: {"latitude"=>"49.282014", "longitude"=>"-123.1081683", "term"=>""}
+Completed 200 OK in 773ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/search" for 127.0.0.1 at 2014-12-14 20:20:09 -0800
+Processing by HomeController#search as */*
+  Parameters: {"latitude"=>"49.282014", "longitude"=>"-123.1081683", "term"=>"asdf"}
+Completed 200 OK in 665ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:12 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.0ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:14 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:21:51 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:22:46 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.4ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:25:28 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:25:47 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (undefined local variable or method `results' for #<#<Class:0x007fbd6609f850>:0x007fbd63b5ab58>):
+    20:   </li>
+    21: </ul>
+    22: 
+    23: <%results%>
+    24: 
+    25: <div class="container">
+    26:   <div class='dishpic'>
+  app/views/home/index.erb:23:in `_app_views_home_index_erb___1192486492190550454_70225699195880'
+
+
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Riceleg/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:03 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.1ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:26:07 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:39 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/map.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-14 20:31:54 -0800
+>>>>>>> addyelppics

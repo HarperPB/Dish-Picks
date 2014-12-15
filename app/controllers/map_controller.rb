@@ -1,6 +1,7 @@
 class MapController < ApplicationController
 
   def index
+    gon.pictures = build_results_container 
   end
 
   def search
