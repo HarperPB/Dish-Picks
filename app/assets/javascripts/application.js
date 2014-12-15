@@ -60,6 +60,7 @@ var initialize = function() {
       // create a new Google map with the options in the map element
       var map = new google.maps.Map($('#map_canvas')[0], mapOptions);  
       bind_controls(map);
+      search(map);
     });//getCurrentPosition
 
   };//initiate_geolocation
@@ -106,14 +107,15 @@ var bind_controls = function(map) {
  * param: map - the Google map object
  */
 var search = function(map) {
-  var searchTerm = $('#map_search input[type=text]').val();
+  
 
   if (inactive === true) { return };
 
   // post to the search with the search term, take the response data
   // and process it
-  $.post('/search', { latitude: myLat, longitude: myLong, term: searchTerm }, function(data) {
-    inactive = true;
+  $.post('/search', { latitude: myLat, longitude: myLong }, function(data) {
+    inactive = true; 
+    //removing { latitude: myLat, longitude: myLong, term: searchTerm }
 
     // do some clean up
     $('#results').show();
@@ -159,9 +161,7 @@ var build_results_container = function(business) {
   return [
     '<div class="result">',
       '<img class="biz_img" src="', business['image_url'], '">',
-      '<h5><a href="', business['url'] ,'" target="_blank">', business['name'], '</a></h5>',
-      '<img src="', business['rating_img_url'], '">',
-      '<p>', business['review_count'], ' reviews</p>',
+      
       '<p class="clear-fix"></p>',
     '</div>'
   ].join('');

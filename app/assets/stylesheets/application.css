@@ -25,6 +25,7 @@ html, body {
 #map_canvas {
   height: 100%;
   width: 100%;
+
 }
 
 #control_container {
@@ -35,6 +36,7 @@ html, body {
   box-shadow: 2px 2px 3px #999;
   -moz-box-shadow: 2px 2px 3px #999;
   -webkit-box-shadow: 2px 2px 3px #999;
+  display: none;
 }
 
 #map_search input[type=text] {
