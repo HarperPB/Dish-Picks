@@ -65,14 +65,7 @@ var initialize = function() {
 
   };//initiate_geolocation
 
-
-
-
-
   initiate_geolocation();
-
-
-
   
 }//initialize
 
@@ -107,7 +100,6 @@ var bind_controls = function(map) {
  * param: map - the Google map object
  */
 var search = function(map) {
-  
 
   if (inactive === true) { return };
 
@@ -160,8 +152,8 @@ var capture = function(i, map, business) {
 var build_results_container = function(business) {
   return [
     '<div class="result">',
-      '<img class="biz_img" src="', business['image_url'], '">',
-      
+      '<img class="biz_img" src="', business['snippet_image_url'], '">',
+      '<p>', business['snippet_text'],'</p>',
       '<p class="clear-fix"></p>',
     '</div>'
   ].join('');

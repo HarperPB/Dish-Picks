@@ -2,10 +2,87 @@
 <html>
 <head>
   <title>Dish Decide</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS']}&sensor=true" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script>
+var map;
+var infowindow;
+var myLat, myLong;
+var photos = [];
+
+function initialize() {
+  initiate_geolocation();
+}
+
+function initiate_geolocation() {  
+  navigator.geolocation.getCurrentPosition(function(position){
+      myLat = position.coords.latitude;
+      myLong = position.coords.longitude;
+  });
+
+  var currentLocation = new google.maps.LatLng(myLat, myLong);
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: currentLocation,
+    zoom: 18
+  });
+  
+  var request = {
+    location: currentLocation,
+    radius: 100,
+    types: ['restaurant']
+  };
+  infowindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+}
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      //if(results[i].opening_hours.open_now == true) {
+        var detailsRequest = { 
+          placeId: results[i].place_id
+        };
+
+        var detailService = new google.maps.places.PlacesService(map);
+        detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            
+            if(placeResult.photos) {
+              for (var z = 0; z < placeResult.photos.length; z++) {
+                photos.push(placeResult.photos[z].getUrl({
+                  maxHeight: 2500,
+                  maxWidth: 2500
+                }));
+              }
+            }
+          }
+        });
+      //}
+      createMarker(results[i]);
+    }
+  }
+  console.log(photos);
+}
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
 </head>
 <body>
 
