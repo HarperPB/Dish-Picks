@@ -37,7 +37,7 @@ html, body {
 
 #map_search input[type=text]:focus {
   outline: none;
-
+  display: none;
   border: 1px solid #c41200;
   border-right: none;
 }
