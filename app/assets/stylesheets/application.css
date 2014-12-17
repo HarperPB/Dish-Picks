@@ -14,22 +14,40 @@
  *= require_self
  */
 
-html, body, #map-canvas {
+/*html, body {
   height: 100%;
   margin: 0px;
   padding: 0px
-}
+}*/
 
-.dishpic {
+/*#hidden-thing {
   float: left;
-  height: 33%;
-  width: 33%;
-  z-index: -1;
   position: relative;
+  margin: 20px;
+}*/
+
+.list {
+  float: left;
+    display: inline;
+  width: 350px;
+  /*overflow: hidden;*/
+  height: 350px;
+  z-index: 1
+  
+
+  z-index: -1;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
 }
 
-.dishpic img {
+.list img {
   width: 100%;
+  border: 2px;
+  border-color: blue
+
+
 
 }
 
@@ -97,5 +115,8 @@ ul li:hover ul {
   opacity: 1;
   visibility: visible;
 }
+
+
+
 
 
