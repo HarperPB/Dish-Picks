@@ -14,11 +14,29 @@
  *= require_self
  */
 
-/*html, body {
+html, body {
   height: 100%;
   margin: 0px;
-  padding: 0px
-}*/
+  padding: 0px;
+  position: relative;
+}
+
+#badfood {
+  position:absolute;
+  bottom:0;
+
+}
+
+#notfood {
+  
+}
+
+#goodfood {
+  
+}
+
+
+/*Assign position:relative to #container, and then position:absolute; bottom:0; to #copyright*/
 
 /*#hidden-thing {
   float: left;

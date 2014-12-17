@@ -26,8 +26,8 @@ function initiate_geolocation() {                    //function is grabbing lat 
     
     var request = {                                             // creating variable and assigning search results
       location: currentLocation,
-      radius: 400,
-      types: ['food', 'restaurant']
+      radius: 120,
+      types: ['restaurant']
     };
     infowindow = new google.maps.InfoWindow();                  // infoWindow shown when you click on pin in the map
     var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
@@ -35,49 +35,10 @@ function initiate_geolocation() {                    //function is grabbing lat 
   });
 };
 
-// function appendNextPhoto() {
-//   if (currentPhotoIndex < photos.length) {
-//     appendImageUrl(photos[currentPhotoIndex++]);
-//   }
-// }
-
-function appendImageUrl(url) {
-  var elem = $('<div><img src="' + url + '"/></div>');
-  $("body").data("current-image-url", url);
-  $('.list').html(elem);  // jquery sets elem variable to html image placeholder
-}
-
-function getNextNearbyPlace() {
-  if (nextNearbyPlaceIndex < nearbyPlaces.length) {             //nearbyPlaces is an array holding all current businesses
-    var place = nearbyPlaces[nextNearbyPlaceIndex++];           //var place is itereating through each business
-    var detailsRequest = {                                      //setting variable equal to what we need from the object
-      placeId: place.place_id                                   // placeId is from google API        ?????????????????????
-    };
-    // console.log(place)
-    var detailService = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // map shit and I think hiding it
-
-    detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {    // another API call based on details request which is the placeid
-      if (placeServiceStatus == google.maps.places.PlacesServiceStatus.OK) {                // if the data is okay
-        if(placeResult && placeResult.photos) {                                             // asking for the photo
-          var firstPhoto = placeResult.photos[0];                                           // sets firstPhoto to first element in array
-          var url = firstPhoto.getUrl({                                                     // sets url to first photo with max height & width  - getUrl is a google api function 
-            maxHeight: 500,
-            maxWidth: 500
-          });
-          appendImageUrl(url);                                                              // calls the function appendImageurl from line 40
-        } else {
-          getNextNearbyPlace();                                                             // gets the next business line 48
-        }
-      }
-    });
-
-  }
-}
-
 function callback(results, status) {                              //function takes results & status
   if (status == google.maps.places.PlacesServiceStatus.OK) {      //if the API call works (getting data back then...)
     nextNearbyPlaceIndex = 0;                                     //set nextNearbyPlaceIndex = 0  ALSO DOING THIS ABOVE NOT SURE WHY
-    nearbyPlaces = results;                                       // ????????????????
+    nearbyPlaces = results;                                      // ????????????????
     getNextNearbyPlace();                                         // calls the function above  line 48
 
     // for (var i = 0; i < results.length; i++) {
@@ -127,6 +88,62 @@ function createMarker(place) {
 //       updateUI();
 //     }, 10000);
 // }
+// function appendNextPhoto() {
+//   if (currentPhotoIndex < photos.length) {
+//     appendImageUrl(photos[currentPhotoIndex++]);
+//   }
+// }
+
+function appendImageUrl(url) {
+  var elem = $('<div><img src="' + url + '"/></div>');
+  $("body").data("current-image-url", url);
+  $('.list').html(elem);  // jquery sets elem variable to html image placeholder
+}
+
+function getNextNearbyPlace() {
+  //nearbyPlaces is an array holding all current businesses
+  if (nextNearbyPlaceIndex < nearbyPlaces.length) {  
+    //var place is itereating through each business
+
+    var place = nearbyPlaces[nextNearbyPlaceIndex++];
+      if (nextNearbyPlaceIndex == 1){
+        var firstimage = place.photos[0].getUrl({                                                     // sets url to first photo with max height & width  - getUrl is a google api function 
+            maxHeight: 500,
+            maxWidth: 500
+          });
+        console.log(firstimage)
+      }
+    //setting variable equal to what we need from the object
+    var detailsRequest = {
+      // placeId is from google API        ?????????????????????                                      
+      placeId: place.place_id                                   
+    };
+    // console.log(place)
+    var detailService = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // map shit and I think hiding it
+
+    detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {    // another API call based on details request which is the placeid
+      if (placeServiceStatus == google.maps.places.PlacesServiceStatus.OK) {                // if the data is okay
+        if(placeResult && placeResult.photos) {                                             // asking for the photo
+          for(i = 0; i < placeResult.photos.length; i++) {
+            photos.push(placeResult.photos[i]);
+          }
+          var firstPhoto = placeResult.photos[0];                                           // sets firstPhoto to first element in array
+          var url = firstPhoto.getUrl({                                                     // sets url to first photo with max height & width  - getUrl is a google api function 
+            maxHeight: 500,
+            maxWidth: 500
+          });
+          appendImageUrl(url);                                                              // calls the function appendImageurl from line 40
+        } else {
+          getNextNearbyPlace();                                                             // gets the next business line 48
+        }
+      }
+    });
+      
+  }
+  else {
+    $( "#badfood, #goodfood, #notfood").remove();
+  }
+}
 
 $(document).ready(function() {
 
