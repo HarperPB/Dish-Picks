@@ -97,7 +97,9 @@ var priceRangeSelect = function (e) {
   minPriceLevel = $(this).val();
   $('.list').children().remove();
   photos = [];
-  nearbyPlaces = [];
+  nearbyPlaces = [];minPriceLevel
+minPriceLevel
+minPriceLevel
   initiate_geolocation(); 
 };
 
@@ -138,7 +140,7 @@ function populatePhotos(success, error) {
 
       detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {    // another API call based on details request which is the placeid
         if (placeServiceStatus == google.maps.places.PlacesServiceStatus.OK) {                // if the data is okay
-          if(placeResult && placeResult.photos) {                                             // asking for the photo
+          if(placeResult && placeResult.photos) {   // Do we still need this?                                          // asking for the photo
             for(i = 0; i < placeResult.photos.length; i++) {
               tmpPhotos.push(placeResult.photos[i].getUrl({                                                     // sets url to first photo with max height & width  - getUrl is a google api function 
                 maxHeight: 500,
@@ -148,6 +150,7 @@ function populatePhotos(success, error) {
             photos = photos.concat(shuffle(tmpPhotos));
           }
         }
+      
       });
     }
     success(nearbyPlaces[0]);
