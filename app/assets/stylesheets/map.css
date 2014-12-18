@@ -13,11 +13,11 @@ html, body {
   padding: 0;
 }
 
-#map_canvas {
+/*#map_canvas {
   height: 100%;
   width: 100%;
 }
-
+*/
 #control_container {
   margin: 20px;
 }

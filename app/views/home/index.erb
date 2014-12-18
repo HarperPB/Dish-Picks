@@ -1,10 +1,4 @@
-<ul><li>MEAL
-    <ul>
-      <li>Breakfast</li>
-      <li>Lunch</li>
-      <li>Dinner</li>
-    </ul>
-  </li>
+<ul>
   <li>KM
     <ul>
       <li>1</li>
@@ -12,45 +6,21 @@
       <li>5</li>
     </ul>
   </li>
-  <li>$
-    <ul>
-      <li>$$</li>
-      <li>$$$</li>
-    </ul>
+  <li>
+    <select id="price-select">
+      <option value="0">$</option>
+      <option value="1">$$</option>
+      <option value="2">$$$</option>
+      <option value="3">$$$$</option>
+      <option value="4">$$$$$</option>
+    </select>
   </li>
 </ul>
 
-<!-- <div class="container">
-  <div class='dishpic'>
-    <img src="http://s3-media2.fl.yelpcdn.com/bphoto/E7A74-3pPpZBVWc5o-D-2A/l.jpg" />
-  </div>
-</div> -->
 
-<div id="map-canvas"></div>
+<div id="hidden-thing" style="display:none;"></div>
+<button id="badfood">No</button>
+<button id="goodfood">Yes</button>
+<button id="notfood">Not Food</button>
 
-<!-- <div id='card-template' style='display: hidden;' class='flip col-xs-3'>
-  <div class='card'>
-    <div class='front-wrap'>
-      <div class="front"></div>
-    </div>
-    <div class='back-wrap'>
-      <div class="back"></div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="panel panel-primary">
-    <div class="overlay"></div>
-    <div class="panel-body">
-      <button id="play_button" class="btn btn-info start">Play Now</button>
-    </div>
-
-    <div id="cards"><div class='row'></div></div>
-      
-  </div>
-
-
-
-</div>
- -->
+<div class="list"></div>
