@@ -1,58 +1,65 @@
 var map;
 var infowindow;
 var myLat, myLong;
+var currentPhotoIndex = 0;
 var photos = [];
+var goodfood = [];
+var badfood = [];
+var notfood = [];
+var nextImage = 0;
+var nearbyPlaces = [];
 
-function initiate_geolocation() {  
 
-  navigator.geolocation.getCurrentPosition(function(position){
-    myLat = position.coords.latitude;
-    myLong = position.coords.longitude;
+// ======================FINDS CURRENT LOCATION =======================
 
-    var currentLocation = new google.maps.LatLng(myLat, myLong);
-    console.log(currentLocation);
+function initiate_geolocation() {                    //function is grabbing lat & long based on users location using html5 function
 
-    map = new google.maps.Map(document.getElementById('map-canvas'), {
-      center: currentLocation,
-      zoom: 18
-    });
+  // for development
+  myLat = 49.282023099999996;
+  myLong = -123.1084264;
+  var currentLocation = new google.maps.LatLng(myLat, myLong);  // WE THINK this is generating the map and assigning to myLocation
+
+  var request = {                                             // creating variable and assigning search results
+    location: currentLocation,
+    radius: 120,
+    types: ['restaurant']
+  };
+  var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
+  service.nearbySearch(request, callback);
+
+  // for production
+  /* navigator.geolocation.getCurrentPosition(function(position){   // browser asks user to approve getting location
     
-    var request = {
+    // myLat = position.coords.latitude;
+    // myLong = position.coords.longitude;
+
+    var currentLocation = new google.maps.LatLng(myLat, myLong);  // WE THINK this is generating the map and assigning to myLocation
+
+    var request = {                                             // creating variable and assigning search results
       location: currentLocation,
-      radius: 400,
+      radius: 120,
       types: ['restaurant']
     };
-    infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, callback);
-  });
+    //infowindow = new google.maps.InfoWindow();                  // infoWindow shown when you click on pin in the map
+    var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
+    service.nearbySearch(request, callback);                    // Think that nearbySearch  is a google function which takes 2 params request and callback
+  }); */
 };
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      //if(results[i].opening_hours.open_now == true) {
-        var detailsRequest = { 
-          placeId: results[i].place_id
-        };
-
-        var detailService = new google.maps.places.PlacesService(map);
-        detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {
-          if (status == google.maps.places.PlacesServiceStatus.OK) {
-            
-            if(placeResult.photos) {
-              for (var z = 0; z < placeResult.photos.length; z++) {
-                photos.push(placeResult.photos[z].getUrl({
-                  maxHeight: 2500,
-                  maxWidth: 2500
-                }));
-              }
-            }
-          }
-        });
-      //}
-      createMarker(results[i]);
-    }
+function callback(results, status) {                              //function takes results & status
+  if (status == google.maps.places.PlacesServiceStatus.OK) {      //if the API call works (getting data back then...)
+    nextNearbyPlaceIndex = 0;                                     //set nextNearbyPlaceIndex = 0  ALSO DOING THIS ABOVE NOT SURE WHY
+    nearbyPlaces = results;                                      // ????????????????
+    
+    populatePhotos(function(firstPlace){
+      loadImage(firstPlace.photos[0].getUrl({
+        maxHeight: 500,
+        maxWidth: 500
+      }));
+    }, function(){
+      alert("OH NO! You're nowhere near restaurants. Are you at Knight and 54th?");
+      //do something else
+    });                                         // calls the function above  line 48
   }
 }
 
@@ -69,16 +76,79 @@ function createMarker(place) {
   });
 }
 
-function updateUI(){ 
-  setTimeout(
-    function(){
-      console.log(photos);
-      updateUI();
-    }, 10000);
+// ======================FINDS IMAGES ATTACHED TO BUSINESSES =======================
+
+function loadImage(url) {
+  var elem = $('<div><img src="' + url + '"/></div>');
+  $("body").data("current-image-url", url);
+  $('.list').html(elem);  // jquery sets elem variable to html image placeholder
 }
 
+function getNextImage() {
+  if(nextImage < photos.length) {
+    loadImage(photos[nextImage]);
+    nextImage++;
+  } else {
+    $( "#badfood, #goodfood, #notfood").remove();
+  }
+}
+function populatePhotos(success, error) {
+  //nearbyPlaces is an array holding all current businesses
+  if(nearbyPlaces.length > 0) {
+    for(var i = 0; i < nearbyPlaces.length; i++) {  
+      //var place is itereating through each business
+      var place = nearbyPlaces[i];
+      //setting variable equal to what we need from the object
+      var detailsRequest = {
+        // placeId is from google API        ?????????????????????                                      
+        placeId: place.place_id                                   
+      };
+      var detailService = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // map shit and I think hiding it
+
+      detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {    // another API call based on details request which is the placeid
+        if (placeServiceStatus == google.maps.places.PlacesServiceStatus.OK) {                // if the data is okay
+          if(placeResult && placeResult.photos) {                                             // asking for the photo
+            for(i = 0; i < placeResult.photos.length; i++) {
+              photos.push(placeResult.photos[i].getUrl({                                                     // sets url to first photo with max height & width  - getUrl is a google api function 
+                maxHeight: 500,
+                maxWidth: 500
+              }));
+            }
+          }
+        }
+      });
+    }
+    success(nearbyPlaces[0]);
+  } else {
+    error();
+  }
+}
+
+// ====================== PICTURE SELECTORS ======== =======================
+
 $(document).ready(function() {
+
+  // bind a click event to clicking on the #goodfood button
+  $("#goodfood").on('click', function () {                                              // sets click function on the picture. 
+    url = $("body").data("current-image-url");
+    goodfood.push(url);
+    getNextImage();                                                     // after click gets next nearby place
+  });
+
+  $("#badfood").on('click', function () {                                              // sets click function on the picture. 
+    url = $("body").data("current-image-url");
+    badfood.push(url);
+    getNextImage();                                                     // after click gets next nearby place
+  });
+
+  $("#notfood").on('click', function () {                                              // sets click function on the picture. 
+    url = $("body").data("current-image-url");
+    notfood.push(url);
+    getNextImage();                                                     // after click gets next nearby place
+  });
+
   // initialize the map on load
-  google.maps.event.addDomListener(window, 'load', initiate_geolocation());
-  updateUI();
+  //google.maps.event.addDomListener(window, 'load', initiate_geolocation());
+  initiate_geolocation();
+  // updateUI();
 });
