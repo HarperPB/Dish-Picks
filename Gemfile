@@ -30,6 +30,8 @@ gem 'spring',        group: :development
 # Use pry for the console
 gem 'pry-rails', group: :development
 
+gem 'gon'
+
 gem 'slim'
 
 group :production do
