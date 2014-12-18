@@ -53,3 +53,5 @@ end
 
 # Yelp gem!
 gem 'yelp'
+
+gem 'sqlite3'

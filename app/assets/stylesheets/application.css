@@ -3,9 +3,7 @@
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ 're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
@@ -14,11 +12,35 @@
  *= require_self
  */
 
-html, body {
+
+/**/
+
+#avatar-icon-container {
+  height: 30px; 
+  width: 40px; 
+  background: #eee; 
+  float: left; 
+  display: inline-block; 
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#avatar-icon-container img {
+  height:100%;
+  width:100%;
+}
+
+/*html, body {
   height: 100%;
   margin: 0px;
   padding: 0px;
   position: relative;
+}
+
+
+.container-fluid{
+  float: none;
+  margin: 0 auto;
 }
 
 #badfood {
@@ -42,35 +64,37 @@ html, body {
   right:0;
   
 }
-
+*/
 
 /*Assign position:relative to #container, and then position:absolute; bottom:0; to #copyright*/
 
 
 .list {
-  float: left;
-    display: inline;
   width: 350px;
-  /*overflow: hidden;*/
   height: 350px;
-  /*  z-index: 1*/
-  
-
-  z-index: -1;
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 
+
 }
 
 .list img {
-  width: 100%;
-  border: 2px;
-  border-color: blue
+  /*width: 100%;*/
+    border: 2px solid;
+  border-color: blue;
+  border-radius: 25px;
+  width: 350px;
+  height: 350px;
+
 
 
 
 }
+
+
+
+/*
 
 ul {
   text-align: left;
@@ -87,7 +111,7 @@ ul li {
   font: bold 12px/18px sans-serif;
   width: 18%;
   display: inline-block;
-  /*margin-right: -4px;*/
+ 
   position: relative;
   padding: 10px 10px;
   background: #fff;
@@ -141,3 +165,4 @@ ul li:hover ul {
 
 
 
+*/

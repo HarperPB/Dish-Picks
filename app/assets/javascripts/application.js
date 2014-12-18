@@ -1,3 +1,4 @@
+//= require bootstrap
 var map;
 var infowindow;
 var myLat, myLong;
@@ -129,7 +130,7 @@ function populatePhotos(success, error) {
 $(document).ready(function() {
 
   // bind a click event to clicking on the #goodfood button
-  $("#goodfood").on('click', function () {                                              // sets click function on the picture. 
+  $(".btn-success").on('click', function () {                                              // sets click function on the picture. 
     url = $("body").data("current-image-url");
     goodfood.push(url);
     getNextImage();                                                     // after click gets next nearby place
