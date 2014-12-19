@@ -15,7 +15,7 @@ var firstPlace;
 // ======================FINDS CURRENT LOCATION =======================
 
 function initiate_geolocation() {                    //function is grabbing lat & long based on users location using html5 function
-console.log('hello')
+console.log('initiate geolocation')
   // for development
   myLat = 49.282023099999996;
   myLong = -123.1084264;
@@ -59,17 +59,17 @@ function callback(results, status, pagination) {                         //funct
     });
     // debugger
     nearbyPlaces = nearbyPlaces.concat(results);
-    console.log(nearbyPlaces)
+    console.log('callback')
 
     populatePhotos(function(firstPlace){               // ADD IF STATEMENT
       loadImage(firstPlace.photos[0].getUrl({
         maxHeight: 500,
         maxWidth: 500
       }));
-      if (pagination.hasNextPage){ 
-         pagination.nextPage();
-        initiate_geolocation();
-      }
+      // if (pagination.hasNextPage){ 
+      //    pagination.nextPage();
+      //   initiate_geolocation();
+      // }
     }, function(){
       alert("OH NO! You're nowhere near restaurants. Are you at Knight and 54th?");
       //do something else
@@ -126,6 +126,7 @@ function getNextImage() {
 
 function populatePhotos(success, error) {
   var tmpPhotos = [];
+  
   //nearbyPlaces is an array holding all current businesses
   if(nearbyPlaces.length > 0) {
     for(var i = 0; i < nearbyPlaces.length; i++) {  
@@ -146,13 +147,19 @@ function populatePhotos(success, error) {
                 maxHeight: 500,
                 maxWidth: 500
               }));
+              
+              
             }
-            photos = photos.concat(shuffle(tmpPhotos));
+            
+            
           }
+
         }
-      
+      photos = tmpPhotos
       });
+     
     }
+
     success(nearbyPlaces[0]);
   } else {
     error();
