@@ -176,8 +176,11 @@ $(document).ready(function() {
     goodfood.push(url);
     if (goodfood.length == 3) {
       $( "button" ).remove();
-      $( ".list" ).remove();
-
+      // $( ".list" ).remove();
+      $('<div><img src="' + goodfood[0] + '"/></div>');
+      $('.list').html(elem);
+      // $('<div><img src="' + goodfood[1] + '"/></div>')
+      // $('<div><img src="' + goodfood[2] + '"/></div>')
     }
     getNextImage();                                                     // after click gets next nearby place
   });
