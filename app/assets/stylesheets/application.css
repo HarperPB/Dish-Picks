@@ -15,10 +15,6 @@
 
 /**/
 
-#price-select.dropdown {
-  display:inline;
-}
-
 #avatar-icon-container {
   height: 30px; 
   width: 40px; 
@@ -34,6 +30,9 @@
   width:100%;
 }
 
+.button {
+  z-index: 1
+}
 
 .list {
   width: 350px;
@@ -45,16 +44,37 @@
 
 .list img {
   /*width: 100%;*/
-    border: 2px solid;
+  border: 2px solid;
   border-color: blue;
   border-radius: 25px;
   width: 350px;
   height: 350px;
 }
 
-.goodfood-container {
-  height: 600px;
-  width: 600px;
-  z-index: 1
+
+
+#favorites {
+  display: none;
+  width: 1200px;
+  height: 350px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#favorites li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+#favorites img {
+  /*width: 100%;*/
+  display: inline;
+  border: 2px solid;
+  border-color: blue;
+  border-radius: 25px;
+  width: 350px;
+  height: 350px;
 }
 
