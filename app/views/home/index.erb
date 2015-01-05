@@ -1,7 +1,6 @@
   <body>
-  <script>
-    var myDataRef = new Firebase('https://t2wozvy12ts.firebaseio-demo.com/');
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
     <div class = "navbar navbar-default navbar-static-top">
       <!--<div class = "iconcontainer"><img src="dishpixlogo.png"/></div>
       -->
@@ -81,7 +80,12 @@
 <button type="button" class="btn btn-success">Yes</button>
 <button type="button" class="btn btn-warning">Not Food</button>
 <button type="button" class="btn btn-danger">No</button>
+<h1>Firebase Realtime Chat</h1>
 
+    <div id="messagesDiv"></div>
+
+    <input type="text" id="nameInput" placeholder="Name" />
+    <input type="text" id="messageInput" placeholder="Message..." />
 </body>
 
 

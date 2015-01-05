@@ -15,6 +15,13 @@ var minPriceLevel = 0;
 var firstPlace;
 var hasLoadedFirstImage = false;
 
+
+// ======================LEARNING HOW TO USE FIREBASE==================
+
+
+
+
+
 // ======================FINDS CURRENT LOCATION =======================
 
 function initiate_geolocation() {                    //function is grabbing lat & long based on users location using html5 function
@@ -209,8 +216,31 @@ $(document).ready(function() {
     getNextImage();                                                     // after click gets next nearby place
   });
 
+  
+
   // initialize the map on load
   //google.maps.event.addDomListener(window, 'load', initiate_geolocation());
   initiate_geolocation();
   // updateUI();
+
+  // =================FIREBASE==============
+ var messagesRef = new Firebase("https://glowing-fire-120.firebaseIO.com/");
+
+  // When the user presses enter on the message input, write the message to firebase.
+  $("#messageInput").keypress(function (e) {
+    if (e.keyCode == 13) {
+      var name = $("#nameInput").val();
+      var text = $("#messageInput").val();
+      messagesRef.push({name:name, text:text});
+      $("#messageInput").val("");
+    }
+  });
+
+  // Add a callback that is triggered for each chat message.
+  messagesRef.limitToLast(10).on("child_added", function (snapshot) {
+    var message = snapshot.val();
+    $("<div/>").text(message.text).prepend($("<em/>")
+      .text(message.name + ": ")).appendTo($("#messagesDiv"));
+    $("#messagesDiv")[0].scrollTop = $("#messagesDiv")[0].scrollHeight;
+  });
 });
