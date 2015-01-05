@@ -21,6 +21,10 @@ function initiate_geolocation() {                    //function is grabbing lat 
   // for development
   myLat = 49.282023099999996;
   myLong = -123.1084264;
+
+  // myLat = 43.6672585;
+  // myLong = -79.3857813;
+  
   var currentLocation = new google.maps.LatLng(myLat, myLong);  
 
   var request = {                                             // creating variable and assigning search results
