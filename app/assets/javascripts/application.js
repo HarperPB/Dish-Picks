@@ -176,7 +176,7 @@ function populatePhotos(success, error) {
   }
 }
 
-// ====================== PICTURE SELECTORS ======== =======================
+// ====================== PICTURE SELECTORS ===============================
 
 $(document).ready(function() {
   $('#price-select').on('change', priceRangeSelect);  
