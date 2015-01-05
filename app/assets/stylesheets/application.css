@@ -15,14 +15,38 @@
 
 /**/
 
+.dropdown {
+  margin: 10px;
+  border: 1px solid;
+  height: 30px;
+}
+
+.navbar-brand{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+/*.button-container {
+  position:absolute; 
+  bottom:0;  
+  margin-bottom:50px; 
+  /*margin-left:40%;*/
+  /*left: 0;*/
+/*}*/
+
+
 #avatar-icon-container {
-  height: 30px; 
-  width: 40px; 
+  height: 40px; 
+  width: 190px; 
   background: #eee; 
   float: left; 
   display: inline-block; 
-  margin-top: 10px;
+  margin-top: 5px;
   margin-right: 10px;
+  margin-left: 20px;
 }
 
 #avatar-icon-container img {
@@ -38,15 +62,16 @@
   width: 350px;
   height: 350px;
   margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+
+  /*position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;*/
 }
 
 .list img {
-  /*width: 100%;*/
+  width: 100%;
   border: 2px solid;
-  border-color: blue;
-  border-radius: 25px;
+  /*border-color: blue;*/
+  border-radius: 20px;
   width: 350px;
   height: 350px;
 }
@@ -71,9 +96,9 @@
 #favorites img {
   /*width: 100%;*/
   display: inline;
-  border: 2px solid;
-  border-color: blue;
-  border-radius: 25px;
+  /*border: 2px solid;*/
+  /*border-color: blue;*/
+  border-radius: 20px;
   width: 350px;
   height: 350px;
 }
