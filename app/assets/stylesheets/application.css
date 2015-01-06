@@ -12,7 +12,6 @@
  *= require_self
  */
 
-
 /**/
 
 .dropdown {
@@ -22,26 +21,21 @@
 }
 
 .navbar-brand{
-    position: absolute;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    margin: auto;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: auto;
 }
 
-/*.button-container {
-  position:absolute; 
-  bottom:0;  
-  margin-bottom:50px; 
-  /*margin-left:40%;*/
-  /*left: 0;*/
-/*}*/
-
+.container {
+  height: 100%;
+}
 
 #avatar-icon-container {
   height: 40px; 
   width: 190px; 
-  background: #eee; 
+  /*background: #eee; */
   float: left; 
   display: inline-block; 
   margin-top: 5px;
@@ -59,28 +53,26 @@
 }
 
 .list {
-  width: 350px;
-  height: 350px;
+  display: block;
+  height: auto;
+  max-width: 100%;
   margin: auto;
-
-  /*position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;*/
 }
 
 .list img {
-  width: 100%;
-  border: 2px solid;
-  /*border-color: blue;*/
-  border-radius: 20px;
   width: 350px;
   height: 350px;
+  border: 2px solid;
+  border-radius: 20px;
 }
 
-
+#after-instruction {
+  display: none;
+}
 
 #favorites {
   display: none;
-  width: 1200px;
+  width: 480px;
   height: 350px;
   margin: auto;
   position: absolute;
@@ -90,16 +82,13 @@
 #favorites li {
   list-style: none;
   display: inline-block;
-  margin: 0 5px;
+  margin: 5px 5px 5px 5px;
 }
 
 #favorites img {
-  /*width: 100%;*/
-  display: inline;
-  /*border: 2px solid;*/
-  /*border-color: blue;*/
+  /*display: inline-block;*/
+  border: 1px solid;
   border-radius: 20px;
-  width: 350px;
-  height: 350px;
+  width: 150px;
+  height: 150px;
 }
-

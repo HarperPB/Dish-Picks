@@ -31,7 +31,7 @@ function initiate_geolocation() {                    //function is grabbing lat 
     location: currentLocation,
     // radius: 20000,
     minPriceLevel : minPriceLevel,
-    types: ['food','restaurant'],
+    types: ['restaurant'],
     rankBy: google.maps.places.RankBy.DISTANCE
   };
   var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
@@ -183,14 +183,19 @@ $(document).ready(function() {
     addresses = ($("body").data("current-image-address"));
     goodfood.push({url : url, addresses : addresses});
 
-    if (goodfood.length == 3) {
+    if (goodfood.length == 4) {
       $( "button" ).remove();
+      $( ".instruction" ).remove();
       $( ".list" ).remove();
       $.each(goodfood, function( index, value ) {
       var elem = $('<li><img data-addresses="' + value.addresses + '" src="' + value.url + '"/></li>');
+      
+      
+
       $( ".goodfood-container #favorites" ).append(elem);
       $( ".goodfood-container #favorites" ).css("display","inline");
-      
+      $( "#after-instruction" ).show();
+   
       });
 
 
