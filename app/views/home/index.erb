@@ -1,26 +1,72 @@
   <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
-    <div class = "navbar navbar-default navbar-static-top">
-      <!--<div class = "iconcontainer"><img src="dishpixlogo.png"/></div>
-      -->
-      <div class = "container">
+    
+    <div class = "container">
+
+        <div class = "navbar navbar-default navbar-static-top span12">
+
           <div id="avatar-icon-container">
             <img src="dishpixlogo.png"/>
           </div>
+
           <div class="navbar-header">
-               <a href="/" class="navbar-brand">DISH PICKS</a>               
-                 <button class="navbar-toggle" data-toggle="collapse" data-target = ".navHeaderCollapse">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
+             <a href="/" class="navbar-brand">Choose 3 Dishes</a>               
+               <button class="navbar-toggle" data-toggle="collapse" data-target = ".navHeaderCollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
           </div>
 
           <div class = "collapse navbar-collapse navHeaderCollapse">
+            <ul class = "nav navbar-nav pull-right">
+              <select id="price-select" class = "dropdown">
+                <option value="0">$</option>
+                <option value="1">$$</option>
+                <option value="2">$$$</option>
+                <option value="3">$$$$</option>
+                <option value="4">$$$$$</option>
+              </select>
+            </ul>      
+          </div>
+        
+        </div>
 
 
-              <ul class = "nav navbar-nav navbar-right">
+      <div class = "row text-center">           
+        <div class="list"></div>
+        <div id="hidden-thing"></div>
+      </div>
+
+      <div class = "row">
+        <div class="goodfood-container">
+          <ul id = "favorites">
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">&nbsp;</div>
+
+      <div class = "row">
+        <div class="col-xs-6 col-xs-offset-5">
+        <!-- <div class = "container button-container"> -->
+          <button type="button" class="btn btn-success btn-responsive">Yes</button>
+          <button type="button" class="btn btn-warning btn-responsive">Not Food</button>
+          <button type="button" class="btn btn-danger btn-responsive">No</button>
+        </div>
+      </div>
+
+  </div>
+  <h1>Firebase Realtime Chat</h1>
+
+    <div id="messagesDiv"></div>
+
+    <input type="text" id="nameInput" placeholder="Name" />
+    <input type="text" id="messageInput" placeholder="Message..." />
+</body>
+
+
                 <!-- <li class = "active"><a href = "#">HOME</a></li> -->
                 
          <!--        <li class = "dropdown">
@@ -39,54 +85,15 @@
 <!--                     <li><a href = "#">$$</a></li>
                     <li><a href = "#">$$$</a></li>
                     <li><a href = "#">$$$$</a></li> -->
-                  <select id="price-select" class = "dropdown">
-                    <option value="0">$</option>
-                    <option value="1">$$</option>
-                    <option value="2">$$$</option>
-                    <option value="3">$$$$</option>
-                    <option value="4">$$$$$</option>
-                  </select>
-                 <!--  </ul>
-
-                </li> -->
-              </ul>      
-          </div>
-      
-      </div>
-    </div>
-
-
-
-
-
-
-
-
 
 
 <!-- <button id="badfood">No</button> -->
 <!-- <button id="goodfood">Yes</button> -->
 <!-- <button id="notfood">Not Food</button>
  -->
- <div id="hidden-thing"></div>
- <div class="list"></div>
- 
-  <div class="goodfood-container">
-    <ul id = "favorites">
-    </ul>
-  </div>
 
-  
-<button type="button" class="btn btn-success">Yes</button>
-<button type="button" class="btn btn-warning">Not Food</button>
-<button type="button" class="btn btn-danger">No</button>
-<h1>Firebase Realtime Chat</h1>
 
-    <div id="messagesDiv"></div>
 
-    <input type="text" id="nameInput" placeholder="Name" />
-    <input type="text" id="messageInput" placeholder="Message..." />
-</body>
 
 
 
