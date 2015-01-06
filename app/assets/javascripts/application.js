@@ -23,26 +23,26 @@ var hasLoadedFirstImage = false;
 // ======================FINDS CURRENT LOCATION =======================
 
 function initiate_geolocation() {                    //function is grabbing lat & long based on users location using html5 function
-  // for development
-  myLat = 49.282023099999996;
-  myLong = -123.1084264;
-  var currentLocation = new google.maps.LatLng(myLat, myLong);  
+  // // for development
+  // myLat = 49.282023099999996;
+  // myLong = -123.1084264;
+  // var currentLocation = new google.maps.LatLng(myLat, myLong);  
 
-  var request = {                                             // creating variable and assigning search results
-    location: currentLocation,
-    // radius: 20000,
-    minPriceLevel : minPriceLevel,
-    types: ['food'],
-    rankBy: google.maps.places.RankBy.DISTANCE
-  };
-  var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
-  service.nearbySearch(request, callback);
+  // var request = {                                             // creating variable and assigning search results
+  //   location: currentLocation,
+  //   // radius: 20000,
+  //   minPriceLevel : minPriceLevel,
+  //   types: ['food'],
+  //   rankBy: google.maps.places.RankBy.DISTANCE
+  // };
+  // var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
+  // service.nearbySearch(request, callback);
 
   // for production
-  /* navigator.geolocation.getCurrentPosition(function(position){   // browser asks user to approve getting location
+   navigator.geolocation.getCurrentPosition(function(position){   // browser asks user to approve getting location
     
-    // myLat = position.coords.latitude;
-    // myLong = position.coords.longitude;
+    myLat = position.coords.latitude;
+    myLong = position.coords.longitude;
 
     var currentLocation = new google.maps.LatLng(myLat, myLong);  // WE THINK this is generating the map and assigning to myLocation
 
@@ -51,10 +51,10 @@ function initiate_geolocation() {                    //function is grabbing lat 
       radius: 120,
       types: ['restaurant']
     };
-    //infowindow = new google.maps.InfoWindow();                  // infoWindow shown when you click on pin in the map
+    infowindow = new google.maps.InfoWindow();                  // infoWindow shown when you click on pin in the map
     var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
     service.nearbySearch(request, callback);                    // Think that nearbySearch  is a google function which takes 2 params request and callback
-  }); */
+  }); 
 };
 
 function callback(results, status, pagination) {                         //function takes results & status
