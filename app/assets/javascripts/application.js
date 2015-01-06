@@ -20,8 +20,6 @@ var hasLoadedFirstImage = false;
 
 
 
-
-
 // ======================FINDS CURRENT LOCATION =======================
 
 function initiate_geolocation() {                    //function is grabbing lat & long based on users location using html5 function
@@ -34,7 +32,7 @@ function initiate_geolocation() {                    //function is grabbing lat 
     location: currentLocation,
     // radius: 20000,
     minPriceLevel : minPriceLevel,
-    types: ['food','restaurant'],
+    types: ['food'],
     rankBy: google.maps.places.RankBy.DISTANCE
   };
   var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
@@ -167,7 +165,83 @@ function populatePhotos(success, error) {
             
           }
         }
-      photos = shuffle(tmpPhotos);
+      photos = [
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh6.googleusercontent.com/-65bjPzAh-1g/U51hXgBOf6I/AAAAAAAAzEs/yB1sumToONo/w500-h500-s0/photo.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh5.googleusercontent.com/-P-14f_7jEv0/U51hbLOT9CI/AAAAAAAAzEw/mulCy5IW_jo/w500-h500-s0/photo.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh3.googleusercontent.com/-3cH8dj30DHw/U51iBSWYRHI/AAAAAAAAzFA/GCbP8HZv7Kk/w500-h500-s0/photo.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh5.googleusercontent.com/-0SY-EU41ErI/U51pJ4Ww7FI/AAAAAAAAAAc/Dylwu7DBZFg/w500-h500-s0/catch122.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh6.googleusercontent.com/-yoKTJXfPIa4/U51g5YHXr-I/AAAAAAAAzEI/JrQtD1zZuNI/w500-h500-s0/photo.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh6.googleusercontent.com/-NYR8zaDhpWY/U51hMQ4rZCI/AAAAAAAAzEg/ikEE9iqOTa0/w500-h500-s0/photo.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh6.googleusercontent.com/-p4I25em4gFg/U51ngDG8R9I/AAAAAAAAzFw/sSvjIw_-JSM/w500-h500-s0/photo.jpg"
+  },
+
+{
+    "address": "Catch 122 Cafe Bistro 122 West Hastings Street Vancouver British Columbia Canada V6B 1G8",
+    "url": "https://lh4.googleusercontent.com/-MQT8lzLBE1E/U51hejg401I/AAAAAAAAzE8/6s_CR05YXhw/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "The Charles Bar 136 West Cordova Street Vancouver British Columbia Canada V6B 5A7",
+    "url": "https://lh5.googleusercontent.com/-iX_xGxxjlLE/Ukxz2ZYfcBI/AAAAAAAAMLg/TVCFlPTAz6g/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "The Charles Bar 136 West Cordova Street Vancouver British Columbia Canada V6B 5A7",
+    "url": "https://lh3.googleusercontent.com/-a7tJfHXHxus/Ukx0DTEtk0I/AAAAAAAAMMY/tQ0imkgdrDw/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "Tim Hortons 108 West Pender Street Vancouver British Columbia Canada V6B 0K4",
+    "url": "https://lh5.googleusercontent.com/-_5IhUZfkBM0/VE53DlrkyWI/AAAAAAABJHc/J7ly0elrWS4/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "Tim Hortons 108 West Pender Street Vancouver British Columbia Canada V6B 0K4",
+    "url": "https://lh4.googleusercontent.com/-1aXI4Dx6zMA/VE53CEmx0HI/AAAAAAABJHM/AtAwt20fgCc/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "Tim Hortons 108 West Pender Street Vancouver British Columbia Canada V6B 0K4",
+    "url": "https://lh4.googleusercontent.com/-QtgSQC_EZg0/VE53FMJB6nI/AAAAAAABJHs/BrxDi5uFwY8/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "The Charles Bar 136 West Cordova Street Vancouver British Columbia Canada V6B 5A7",
+    "url": "https://lh3.googleusercontent.com/-D-JsdiOkAmI/Ukx0FXzxfmI/AAAAAAAAMMg/rfQxnJlB-ls/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "Tim Hortons 108 West Pender Street Vancouver British Columbia Canada V6B 0K4",
+    "url": "https://lh6.googleusercontent.com/-021zXmuBZn0/VE52_iZBo1I/AAAAAAABJG0/YyHv_tQ2Ads/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "Tim Hortons 108 West Pender Street Vancouver British Columbia Canada V6B 0K4",
+    "url": "https://lh6.googleusercontent.com/-zYRZOZPNe0w/VE53C5WI3CI/AAAAAAABJHU/6RzgnxxbNKk/w500-h500-s0/photo.jpg"
+  },
+{
+    "address": "The Charles Bar 136 West Cordova Street Vancouver British Columbia Canada V6B 5A7",
+    "url": "https://lh5.googleusercontent.com/-AGzSA2dhhyY/Ukxz9z61mAI/AAAAAAAAMMA/9P0thVOUV_I/w500-h500-s0/photo.jpg"
+  },
+];
       });
     }
     
