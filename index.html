@@ -1,0 +1,82 @@
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Dish Decide</title>
+  <!-- Jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Google API -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+    <!-- Custom JS -->
+  <script src="js/application.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/underscore.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    
+    <div class = "container">
+
+        <div class = "navbar navbar-default navbar-static-top span12">
+
+          <div id="avatar-icon-container">
+            <img src="dishpixlogo.png"/>
+          </div>
+
+          <div class="navbar-header">
+             <a href="/" class="navbar-brand"></a>               
+               <button class="navbar-toggle" data-toggle="collapse" data-target = ".navHeaderCollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+          </div>
+
+          <div class = "collapse navbar-collapse navHeaderCollapse">
+            <ul class = "nav navbar-nav pull-right">
+              <select id="price-select" class = "dropdown">
+                <option value="0">$</option>
+                <option value="1">$$</option>
+                <option value="2">$$$</option>
+                <option value="3">$$$$</option>
+                <option value="4">$$$$$</option>
+              </select>
+            </ul>      
+          </div>
+        </div>
+          
+      <div class="row text-center instruction">Choose 4 dishes then go eat 1</div>
+
+      <div class="row text-center">
+        <h5 id = "after-instruction"> Take me to your eater</h5>
+      </div>
+
+      <div class="row">&nbsp;</div>
+
+      <div class = "row text-center">           
+        <div class="list"></div>
+        <div id="hidden-thing"></div>
+      </div>
+
+      <div class = "row">
+        <div class= "goodfood-container">
+          <ul id = "favorites">
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">&nbsp;</div>
+
+          <div class = "row">
+          <div class="col-xs-12 col-xs-offset-5">
+            <button type="button" class="btn btn-success btn-responsive">Yes</button>
+            <button type="button" class="btn btn-warning btn-responsive">N/A</button>
+            <button type="button" class="btn btn-danger btn-responsive">No</button>
+          </div>
+      </div>
+
+  </div>
+</body>
+</html>

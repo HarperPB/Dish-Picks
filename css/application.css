@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ 're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/**/
+
+.dropdown {
+  margin: 10px;
+  border: 1px solid;
+  height: 30px;
+}
+
+.navbar-brand{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.container {
+  height: 100%;
+}
+
+#avatar-icon-container {
+  height: 40px; 
+  width: 190px; 
+  /*background: #eee; */
+  float: left; 
+  display: inline-block; 
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+#avatar-icon-container img {
+  height:100%;
+  width:100%;
+}
+
+.button {
+  z-index: 1
+}
+
+.list {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: auto;
+}
+
+.list img {
+  width: 350px;
+  height: 350px;
+  border: 2px solid;
+  border-radius: 20px;
+}
+
+#after-instruction {
+  display: none;
+}
+
+#favorites {
+  display: none;
+  width: 480px;
+  height: 350px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#favorites li {
+  list-style: none;
+  display: inline-block;
+  margin: 5px 5px 5px 5px;
+}
+
+#favorites img {
+  /*display: inline-block;*/
+  border: 1px solid;
+  border-radius: 20px;
+  width: 150px;
+  height: 150px;
+}
