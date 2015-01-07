@@ -1,218 +1,225 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require bootstrap
+//= require underscore.js
 
-var markersArray = [];
-var SF_LAT = 49.2496600;
-var SF_LNG = -123.1193400;
-var QUERY_DELAY = 400;
-var inactive = false;
+var map;
+var infowindow;
 var myLat, myLong;
-$(document).ready(function() {
-  // initialize the map on load
-  initialize();
-});
+var currentPhotoIndex = 0;
+var photos = [];
+var goodfood = [];
+var badfood = [];
+var notfood = [];
+var nextImage = 0;
+var nearbyPlaces = [];
+var minPriceLevel = 0;
+var firstPlace;
+var hasLoadedFirstImage = false;
 
-/**
- * Initializes the map and some events on page load
- */
-var initialize = function() {
+// ======================FINDS CURRENT LOCATION =======================
 
-  // Define some options for the map
-  function initiate_geolocation() 
-  {  
-    navigator.geolocation.getCurrentPosition(function(position)
-    {
+function initiate_geolocation() {                    //function is grabbing lat & long based on users location using html5 function
+  // for development
+  myLat = 49.282023099999996;
+  myLong = -123.1084264;
 
-      myLat = position.coords.latitude;
-      myLong = position.coords.longitude;
-
-      var mapOptions = 
-      {
-        center: new google.maps.LatLng(myLat, myLong),
-        zoom: 16,
-
-        // hide controls
-        panControl: false,
-        streetViewControl: false,
-
-        // reconfigure the zoom controls
-        zoomControl: true,
-        zoomControlOptions: {
-          position: google.maps.ControlPosition.RIGHT_BOTTOM,
-          style: google.maps.ZoomControlStyle.SMALL
-        }
-      }
-
-      // create a new Google map with the options in the map element
-      var map = new google.maps.Map($('#map_canvas')[0], mapOptions);  
-      bind_controls(map);
-    });//getCurrentPosition
-
-  };//initiate_geolocation
-
-
-
-
-
-  initiate_geolocation();
-
-
-
+  // myLat = 43.6672585;
+  // myLong = -79.3857813;
   
-}//initialize
+  var currentLocation = new google.maps.LatLng(myLat, myLong);  
 
-/**
- * Bind and setup search control for the map
- *
- * param: map - the Google map object
- */
-var bind_controls = function(map) {
-  // get the container for the search control and bind and event to it on submit
-  var controlContainer = $('#control_container')[0];
-  google.maps.event.addDomListener(controlContainer, 'submit', function(e) {
-    e.preventDefault();
-    search(map);
-  });
+  var request = {                                             // creating variable and assigning search results
+    location: currentLocation,
+    // radius: 20000,
+    minPriceLevel : minPriceLevel,
+    types: ['restaurant'],
+    rankBy: google.maps.places.RankBy.DISTANCE
+  };
+  var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
+  service.nearbySearch(request, callback);
 
-  // get the search button and bind a click event to it for searching
-  var searchButton = $('#map_search_submit')[0];
-  google.maps.event.addDomListener(searchButton, 'click', function(e) {
-    e.preventDefault();
-    search(map);
-  });
+  // for production
+  /* navigator.geolocation.getCurrentPosition(function(position){   // browser asks user to approve getting location
+    
+    // myLat = position.coords.latitude;
+    // myLong = position.coords.longitude;
 
-  // push the search controls onto the map
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlContainer);
+    var currentLocation = new google.maps.LatLng(myLat, myLong);  // WE THINK this is generating the map and assigning to myLocation
+
+    var request = {                                             // creating variable and assigning search results
+      location: currentLocation,
+      radius: 120,
+      types: ['restaurant']
+    };
+    //infowindow = new google.maps.InfoWindow();                  // infoWindow shown when you click on pin in the map
+    var service = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // ????
+    service.nearbySearch(request, callback);                    // Think that nearbySearch  is a google function which takes 2 params request and callback
+  }); */
+};
+
+function callback(results, status, pagination) {                         //function takes results & status
+  if (status == google.maps.places.PlacesServiceStatus.OK) {      //if the API call works (getting data back then...)
+    nextNearbyPlaceIndex = 0;                                     //set nextNearbyPlaceIndex = 0  ALSO DOING THIS ABOVE NOT SURE WHY
+                    
+    results = _.reject(results, function(place) {
+      return place.photos == undefined
+    });
+    // debugger
+    nearbyPlaces = nearbyPlaces.concat(results);
+    console.log(nearbyPlaces)
+
+    populatePhotos(function(photo){               // ADD IF STATEMENT
+      hasLoadedFirstImage = true;
+      if ($('.list').children().length == 0){
+        loadImage(photo);
+      }
+      if (pagination.hasNextPage){ 
+         pagination.nextPage();
+        initiate_geolocation();
+      }
+    }, function(){
+      alert("OH NO! You're nowhere near restaurants. Are you at Knight and 54th?");
+      //do something else
+    });                                         // calls the function above  line 48
+  }
 }
 
-/**
- * Makes a post request to the server with the search term and
- * populates the map with the response businesses
- *
- * param: map - the Google map object
- */
-var search = function(map) {
-  var searchTerm = $('#map_search input[type=text]').val();
-
-  if (inactive === true) { return };
-
-  // post to the search with the search term, take the response data
-  // and process it
-  $.post('/search', { latitude: myLat, longitude: myLong, term: searchTerm }, function(data) {
-    inactive = true;
-
-    // do some clean up
-    $('#results').show();
-    $('#results').empty();
-    clearMarkers();
-
-    // iterate through each business in the response capture the data
-    // within a closure.
-    data['businesses'].forEach(function(business, index) {
-      capture(index, map, business);
-    });
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
   });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+// ======================FINDS IMAGES ATTACHED TO BUSINESSES =======================
+
+var priceRangeSelect = function (e) {
+  e.preventDefault();
+  minPriceLevel = $(this).val();
+  $('.list').children().remove();
+  photos = [];
+  nearbyPlaces = [];
+  initiate_geolocation(); 
 };
 
-/**
- * Capture the specific business objects within a closure for setTimeout
- * or else it'll execute only on the last business in the array
- *
- * param: i - the index the business was at in the array, used to the
- *            timeout delay
- * param: map - the Google map object used for geocoding and marker placement
- * param: business - the business object from the response
- */
-var capture = function(i, map, business) {
-  setTimeout(function() {
-    if (i === 15) {
-      inactive = false;
+
+function loadImage(photo) {
+  var elem = $('<div><img src="' + photo.url + '"/></div>');
+  $("body").data("current-image-url", photo.url);
+  $("body").data("current-image-address", photo.address);
+  $('.list').html(elem);  // jquery sets elem variable to html image placeholder
+};
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+function getNextImage() {
+  if(nextImage < photos.length) {
+    loadImage(photos[nextImage]);
+    nextImage++;
+  } 
+}
+
+function populatePhotos(success, error) {
+  var tmpPhotos = [];
+  //nearbyPlaces is an array holding all current businesses
+  if(nearbyPlaces.length > 0) {
+    for(var i = 0; i < nearbyPlaces.length; i++) {  
+      //var place is itereating through each business
+      var place = nearbyPlaces[i];
+      //setting variable equal to what we need from the object
+      var detailsRequest = {
+        // placeId is from google API        ?????????????????????                                      
+        placeId: place.place_id                                   
+      };
+      var detailService = new google.maps.places.PlacesService(document.getElementById('hidden-thing'));  // map shit and I think hiding it
+
+      detailService.getDetails(detailsRequest, function(placeResult, placeServiceStatus) {    // another API call based on details request which is the placeid
+        
+
+        if(!hasLoadedFirstImage && photos.length > 0){
+          success(photos[0]);     
+        }
+        if (placeServiceStatus == google.maps.places.PlacesServiceStatus.OK) {                // if the data is okay
+          if(placeResult && placeResult.photos) {   // Do we still need this?                                          // asking for the photo
+            var address = placeResult.name + ' ' + _.inject(placeResult.address_components, function(memo, component) {
+              memo.push(component.long_name);
+              return memo;
+            }, []).join(' ');
+            for(i = 0; i < placeResult.photos.length; i++) {
+              tmpPhotos.push({
+                address : address,
+                url : placeResult.photos[i].getUrl({                                                     // sets url to first photo with max height & width  - getUrl is a google api function 
+                maxHeight: 500,
+                maxWidth: 500
+              })});
+            }
+            
+          }
+        }
+      photos = shuffle(tmpPhotos);
+      });
     }
+    
+  } else {
+    error();
+  }
+}
 
-    $('#results').append(build_results_container(business));
+// ====================== PICTURE SELECTORS ======== =======================
 
-    // get the geocoded address for the business's location
-    geocode_address(map, business['name'], business['location']);
-  }, QUERY_DELAY * i); // the delay on the timeout
-};
+$(document).ready(function() {
+  $('#price-select').on('change', priceRangeSelect);  
+  // bind a click event to clicking on the #goodfood button
+  $(".btn-success").on('click', function () {                                              // sets click function on the picture. 
+    url = $("body").data("current-image-url");
+    addresses = ($("body").data("current-image-address"));
+    goodfood.push({url : url, addresses : addresses});
 
-/**
- * Builds the div that'll display the business result from the API
- *
- * param: business - object of the business response
- */
-var build_results_container = function(business) {
-  return [
-    '<div class="result">',
-      '<img class="biz_img" src="', business['image_url'], '">',
-      '<h5><a href="', business['url'] ,'" target="_blank">', business['name'], '</a></h5>',
-      '<img src="', business['rating_img_url'], '">',
-      '<p>', business['review_count'], ' reviews</p>',
-      '<p class="clear-fix"></p>',
-    '</div>'
-  ].join('');
-};
+    if (goodfood.length == 4) {
+      $( "button" ).remove();
+      $( ".instruction" ).remove();
+      $( ".list" ).remove();
+      $.each(goodfood, function( index, value ) {
+      var elem = $('<li><img data-addresses="' + value.addresses + '" src="' + value.url + '"/></li>');
+      
+      
 
-/**
- * Geocode the address from the business and drop a marker on it's
- * location on the map
- *
- * param: map - the Google map object to drop a marker on
- * param: name - the name of the business, used for when you hover
- *               over the dropped marker
- * param: location_object - an object of the businesses address
- */
-var geocode_address = function(map, name, location_object) {
-  var geocoder = new google.maps.Geocoder();
-
-  var address = [
-    location_object['address'][0],
-    location_object['city'],
-    location_object['country_code']
-  ].join(', ');
-
-  // geocode the address and get the lat/lng
-  geocoder.geocode({address: address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-
-      // create a marker and drop it on the name on the geocoded location
-      var marker = new google.maps.Marker({
-        animation: google.maps.Animation.DROP,
-        map: map,
-        position: results[0].geometry.location,
-        title: name
+      $( ".goodfood-container #favorites" ).append(elem);
+      $( ".goodfood-container #favorites" ).css("display","inline");
+      $( "#after-instruction" ).show();
+   
       });
 
-      // save the marker object so we can delete it later
-      markersArray.push(marker);
-    } else {
-      console.log("Geocode was not successful for the following reason: " + status);
+
+      $(".goodfood-container #favorites img").on('click', function (e) {
+        window.location = "https://maps.google.ca/maps?q=" + e.target.getAttribute('data-addresses');
+      });
     }
-  });
-};
-
-/**
- * Remove all of the markers from the map by setting them
- * to null
- */
-var clearMarkers = function() {
-  markersArray.forEach(function(marker) {
-    marker.setMap(null);
+    getNextImage();                                                     // after click gets next nearby place
   });
 
-  markersArray = [];
-};
+  $(".btn-danger").on('click', function () {                                              // sets click function on the picture. 
+    url = $("body").data("current-image-url");
+    badfood.push(url);
+    getNextImage();                                                     // after click gets next nearby place
+  });
+
+  $(".btn-warning").on('click', function () {                                              // sets click function on the picture. 
+    url = $("body").data("current-image-url");
+    notfood.push(url);
+    getNextImage();                                                     // after click gets next nearby place
+  });
+
+  // initialize the map on load
+  //google.maps.event.addDomListener(window, 'load', initiate_geolocation());
+  initiate_geolocation();
+  // updateUI();
+});

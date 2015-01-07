@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
   def index
+
+    
   end
+
+
+
 
   def search
     coordinates = { latitude: params[:latitude], longitude: params[:longitude] }
